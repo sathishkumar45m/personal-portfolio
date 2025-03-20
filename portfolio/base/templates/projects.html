@@ -1,0 +1,172 @@
+{% load static %}
+<style>
+/* 🎨 Soft Gradient Background for a Modern Look */
+.projects-container {
+    background: linear-gradient(135deg, #90b2d4, #0a97fc) ;
+    color: #333;
+    text-align: center;
+    padding: 80px 20px;
+    min-height: 80vh;
+    /* display: flex;
+    flex-direction: column; */
+    align-items: center;
+    font-family: 'Poppins', sans-serif
+}
+    
+
+/* 🌟 Stylish H1 Title */
+.projects-container h1 {
+    font-size: 2.5em;
+    font-weight: 700;
+    color: #00ff11;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    position: relative;
+    display: inline-block;
+    text-shadow: 6px 6px 6px rgb(50, 48, 48);
+    font-weight: bolder;
+}
+
+/* 🎨 H1 Underline Effect */
+.projects-container h1::after {
+    content: "";
+    width: 60%;
+    height: 4px;
+    background: linear-gradient(90deg, #007bff, #ff4081, #ffca28);
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50px;
+}
+
+/* 🔹 Well-Organized Grid Layout */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: auto;
+    padding-top: 30px;
+}
+
+/* 🏆 Neat & Elegant Project Card */
+.project-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
+    border-left: 5px solid #007bff;
+    opacity: 0;
+    animation: fadeIn 0.8s ease-in-out forwards;
+}
+
+/* ✨ Smooth Hover Effect */
+.project-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* 🌟 Animated Border Highlight */
+.project-card::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #007bff, #ff4081, #ffca28);
+    transition: width 0.4s ease-in-out, left 0.4s ease-in-out;
+    border-radius: 50px;
+}
+
+.project-card:hover::before {
+    width: 75%;
+    left: 12.5%;
+}
+
+/* 🎭 Clean Gradient Title */
+.project-card h2 {
+    font-size: 1.6em;
+    margin-bottom: 12px;
+    color: #007bff;
+    font-weight: 600;
+    transition: color 0.3s ease-in-out;
+    font-weight: bolder;
+    text-shadow: 2px 2px rgb(50, 48, 48);
+}
+
+.project-card:hover h2 {
+    color: #ff4081;
+}
+
+/* 📝 Clean Typography for Descriptions */
+.project-card p {
+    font-size: 1.1em;
+    color: #444;
+    text-align: left;
+    line-height: 1.6;
+    transition: color 0.3s ease-in-out;
+}
+
+.project-card p strong {
+    color: #ff9800;
+    font-weight: bold;
+}
+
+/* 🎬 Smooth Fade-in Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 📱 Fully Responsive */
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project-card {
+        padding: 25px;
+    }
+
+    .project-card h2 {
+        font-size: 1.4em;
+    }
+
+    .project-card p {
+        font-size: 1em;
+    }
+
+    .projects-container h1 {
+        font-size: 2em;
+    }
+}
+
+
+</style>
+
+{% block content %}
+<div class="projects-container">
+    <h1>My Projects</h1>
+    <div class="projects-grid">
+        {% for project in projects %}
+        <div class="project-card">
+            <h2>{{ project.title }}</h2>
+            <p>{{ project.description }}</p>
+            <p><strong>TechS:</strong> {{ project.techs|join:", " }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,19 @@
+{% extends 'main.html'%}
+
+
+{% block content %}
+<div class="home2">
+<center>
+   
+    <h1 style="color: chartreuse; font-weight: bolder;  text-shadow: 6px 6px 6px rgba(208, 25, 25, 0.8); ">My Skills</h1>
+    <div class="skill-container">
+        {% for skill in skills %}
+        <div class="skill">
+            <p>{{ skill.name }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</center>
+</div>
+ 
+{% endblock content %}

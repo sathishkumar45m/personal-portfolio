@@ -1,0 +1,246 @@
+{% load static %}
+<style>
+/* General Styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: radial-gradient(circle, #1a1a2e, #16213e, #0f3460);
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    overflow-x: hidden;
+    animation: bgGradient 10s infinite alternate ease-in-out;
+}
+
+/* Animated Background Gradient */
+@keyframes bgGradient {
+    0% { background: radial-gradient(circle, #1a1a2e, #16213e, #0f3460); }
+    100% { background: radial-gradient(circle, #222831, #393e46, #00adb5); }
+}
+
+/* Starry Background Effect */
+body::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: url("https://i.imgur.com/Y7nptI6.png");
+    opacity: 0.2;
+    z-index: -1;
+    animation: starsMove 20s linear infinite;
+}
+
+@keyframes starsMove {
+    0% { background-position: 0 0; }
+    100% { background-position: 1000px 1000px; }
+}
+
+/* About Me Section */
+.about-text p {
+    font-size: 18px;
+    opacity: 4px;
+    animation: fadeIn 1s ease-in-out forwards;
+}
+
+/* Animated Gradient Text */
+.about-text p:first-child {
+    font-size: 32px;
+    font-weight: bold;
+    background: linear-gradient(270deg, #ff8a00, #e52e71, #9b51e0, #ff8a00);
+    width:250px;
+    height:50px;
+    margin-left:630px;
+    padding:5px;
+}
+
+/* Add a keyframe animation for a smooth glowing effect */
+@keyframes textGlow {
+    0% {
+        background-position: 0% 50%;
+        text-shadow: 0 0 10px rgba(255, 138, 0, 0.5);
+    }
+    50% {
+        background-position: 100% 50%;
+        text-shadow: 0 0 20px rgba(229, 46, 113, 0.7);
+    }
+    100% {
+        background-position: 0% 50%;
+        text-shadow: 0 0 10px rgba(155, 81, 224, 0.5);
+    }
+}
+
+/* Text Glow */
+@keyframes textGlow {
+    0% { text-shadow: 0 0 10px #ff8a00, 0 0 20px #e52e71; }
+    100% { text-shadow: 0 0 30px #ff8a00, 0 0 40px #e52e71; }
+}
+
+/* Achievements Section */
+.achievements-container {
+    margin-top: 30px;
+    padding: 20px;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+    animation: slideIn 1s ease-in-out, shimmer 4s infinite alternate;
+}
+
+/* Bouncing Achievements List */
+.achievements-container li {
+    list-style: none;
+    opacity: 0;
+    animation: bounceIn 1.5s ease-in-out forwards;
+}
+
+.achievements-container li:nth-child(2) { animation-delay: 0.5s; }
+.achievements-container li:nth-child(3) { animation-delay: 1s; }
+.achievements-container li:nth-child(4) { animation-delay: 1.5s; }
+
+@keyframes bounceIn {
+    0% { transform: scale(0.8); opacity: 0; }
+    50% { transform: scale(1.1); opacity: 0.5; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Glowing Social Icons with 3D Rotation */
+.social-links {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.social-links li {
+    display: inline-block;
+}
+
+/* Neon 3D Icons */
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    overflow: hidden;
+    transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+    animation: neonPulse 2s infinite alternate;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+    position: relative;
+    transform-style: preserve-3d;
+}
+
+/* Social Icon Rotation */
+.social-links a:hover {
+    transform: scale(1.3) rotateY(360deg);
+    box-shadow: 0 0 35px rgba(255, 255, 255, 0.8);
+}
+
+/* Neon Glow Animation */
+@keyframes neonPulse {
+    0% { transform: scale(1); box-shadow: 0 0 15px rgba(255, 255, 255, 0.3); }
+    50% { transform: scale(1.2); box-shadow: 0 0 40px rgba(255, 255, 255, 0.5); }
+    100% { transform: scale(1); box-shadow: 0 0 15px rgba(255, 255, 255, 0.3); }
+}
+
+/* Parallax Effect on Hover */
+.achievements-container:hover {
+    transform: perspective(1000px) rotateY(5deg);
+    transition: transform 0.5s ease-in-out;
+}
+
+/* Button Glow */
+.glow-button {
+    background: linear-gradient(45deg, #ff416c, #ff4b2b);
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 30px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.4s;
+    text-transform: uppercase;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    animation: glowEffect 1.5s infinite alternate;
+}
+
+.glow-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.7);
+}
+
+/* Glowing Animation */
+@keyframes glowEffect {
+    0% { box-shadow: 0 0 10px rgba(255, 255, 255, 0.3); }
+    100% { box-shadow: 0 0 20px rgba(255, 255, 255, 0.7); }
+}
+
+/* Slide In Animation */
+@keyframes slideIn {
+    from { transform: translateX(-100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+/* Background Shimmer */
+@keyframes shimmer {
+    0% { background: rgba(255, 255, 255, 0.1); }
+    100% { background: rgba(255, 255, 255, 0.2); }
+}
+.social-links a {
+    background-image: url('../images/linkedin.png'); /* Adjust path */
+    background-size: cover;
+    width: 60px;
+    height: 60px;
+    display: inline-block;
+    border-radius: 50%;
+}
+.social-links img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    display: block;
+}
+
+
+
+</style>
+
+{% block content %}
+    <div class="about-text">
+    <!-- <h1>About Me</h1> -->
+        <p>ABOUT  ME</p>
+        <p>
+            Hello! I'm Sathish Kumar, a passionate software developer with
+            expertise in building dynamic and responsive web applications.<br><br> 
+            I love solving complex problems and creating user-friendly solutions.
+        </p>
+    </div>
+
+
+<!-- Achievements Section -->
+<div class="achievements-container">
+    <h2>Achievements</h2>
+       <p>Developed a portfolio website with Django</p>
+       <p>Contributed to open-source projects on GitHub.</p>
+       <p>Completed certifications in Full-Stack Development.</p>
+       <p>Participated in hackathons and won awards for innovative solutions.</p>
+    
+</div>
+
+<!-- Contact Section -->
+<div class="contact-container">
+    <h2>Connect with Me</h2>
+    <ul class="social-links">
+        <li><a href="https://www.linkedin.com/in/sathish-kumar-cs/" target="_blank"><img src="{% static 'css/images/linkedin.png'%}"></a></li>
+        <li><a href="https://www.instagram.com/_.dusky._.boy._.45" target="_blank"><img src="{% static 'css/images/insta.png'%}"></a></li>
+        <li><a href="https://github.com/sathishkumar45m" target="_blank"><img src="{% static 'css/images/GitHub-Logo.png'%}"></a></li>
+    </ul>
+</div>
+{% endblock content %}

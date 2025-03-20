@@ -1,0 +1,146 @@
+{% load static %}
+{% block content %}
+
+<style>
+    /* Body Background Styling */
+    body {
+        background: url("{% static 'css/images/contact.jpg' %}") no-repeat center center fixed;
+        background-size: cover;
+        font-family: 'Poppins', sans-serif;
+        color: #ffffff; /* Ensure text is visible on the background */
+    }
+
+    /* General Form Styling */
+    form {
+        width: 40%;
+        margin: 20px auto;
+        padding: 30px;
+        border: 2px solid rgba(255, 255, 255, 0.5); /* Transparent border */
+        border-radius: 20px;
+        background: rgba(0, 0, 0, 0.5); /* Fully transparent black background */
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+        transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+        animation: fadeIn 1s ease-in-out;
+        color: #ffffff; /* Ensure text inside the form is visible */
+    }
+
+    form:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.7);
+        background: rgba(0, 0, 0, 0.7); /* Slightly darker on hover */
+    }
+
+    /* Style Form Inputs */
+    input[type="text"],
+    input[type="email"],
+    textarea {
+        width: 100%;
+        padding: 15px;
+        margin: 10px 0;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        border-radius: 8px;
+        font-size: 16px;
+        background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent white background for inputs */
+        color: #ffffff; /* White text for inputs */
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        animation: slideIn 1s ease-in-out;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    textarea:focus {
+        border-color: #04ff00; /* Bright green border on focus */
+        box-shadow: 0 0 8px rgba(4, 255, 0, 0.5);
+        outline: none;
+    }
+
+    /* Submit Button Styling */
+    input[type="submit"] {
+        background: linear-gradient(135deg, #04ff00, #00bfff); /* Green to blue gradient */
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 18px;
+        font-weight: bold;
+        transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        animation: bounce 2s infinite ease-in-out;
+    }
+
+    input[type="submit"]:hover {
+        background: linear-gradient(135deg, #00bfff, #04ff00); /* Reverse gradient on hover */
+        transform: scale(1.1);
+        box-shadow: 0 8px 15px rgba(4, 255, 0, 0.5);
+    }
+
+    /* Heading Style */
+    h1 {
+        text-align: center;
+        color: #04ff00; /* Bright green heading */
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 5px rgba(4, 255, 0, 0.5);
+        animation: fadeIn 1.5s ease-in-out;
+        padding-top: 10px;
+    }
+
+    /* Keyframes for Animations */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes bounce {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        form {
+            width: 90%;
+            padding: 20px;
+        }
+
+        input[type="submit"] {
+            font-size: 16px;
+            padding: 10px 15px;
+        }
+
+        h1 {
+            font-size: 2rem;
+        }
+    }
+</style>
+
+<h1>Contact Me</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Send">
+</form>
+
+{% endblock content %}

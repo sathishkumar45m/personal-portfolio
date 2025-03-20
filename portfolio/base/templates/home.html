@@ -1,0 +1,26 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<!-- Navbar -->
+<header>
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="/">HOME</a></li>
+            <li><a href="{% url 'skills' %}">SKILLS</a></li>
+            <li><a href="{% url 'projects' %}">PROJECTS</a></li>
+            <li><a href="{% url 'about' %}">ABOUT ME</a></li>
+            <li><a href="{% url 'contact' %}">CONTACT ME</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="content2">
+        <p style="font-size: 50px; font-weight:bold; padding:50px; text-shadow: 4px4px 6px black; color: rgb(173, 255, 10);">Software Developer</p>
+        <h1 style="font-size:bolder;padding:30px;" padd>SathishKumar. M</h1>
+    </div>
+</section>
+
+{% endblock content %}
